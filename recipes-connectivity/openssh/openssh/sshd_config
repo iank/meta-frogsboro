@@ -1,0 +1,48 @@
+#       $OpenBSD: sshd_config,v 1.102 2018/02/16 02:32:40 djm Exp $
+
+# This sshd was compiled with PATH=/usr/bin:/bin:/usr/sbin:/sbin
+
+#Port 22
+#AddressFamily any
+#ListenAddress 0.0.0.0
+#ListenAddress ::
+
+PermitRootLogin yes
+#PubkeyAuthentication yes
+
+AuthorizedKeysFile      .ssh/authorized_keys
+
+PasswordAuthentication no
+PermitEmptyPasswords no
+ChallengeResponseAuthentication no
+
+UsePAM yes
+
+#AllowAgentForwarding yes
+#AllowTcpForwarding yes
+#GatewayPorts no
+#X11Forwarding no
+#X11DisplayOffset 10
+#X11UseLocalhost yes
+#PermitTTY yes
+#PrintMotd yes
+#PrintLastLog yes
+#TCPKeepAlive yes
+#UseLogin no
+#PermitUserEnvironment no
+Compression no
+ClientAliveInterval 15
+ClientAliveCountMax 4
+#UseDNS no
+#PidFile /var/run/sshd.pid
+#MaxStartups 10:30:100
+#PermitTunnel no
+#ChrootDirectory none
+#VersionAddendum none
+
+# override default of no subsystems
+Subsystem       sftp    /usr/libexec/sftp-server
+
+HostKey /data/ssh/ssh_host_rsa_key
+HostKey /data/ssh/ssh_host_ecdsa_key
+HostKey /data/ssh/ssh_host_ed25519_key

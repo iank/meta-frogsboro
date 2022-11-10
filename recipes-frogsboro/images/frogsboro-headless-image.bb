@@ -3,6 +3,7 @@ LICENSE = "MIT"
 PR = "r1"
 
 ROOTFS_POSTPROCESS_COMMAND += "frogsboro_provisioning;"
+IMAGE_PREPROCESS_COMMAND += "sshd_defaults_hack;"
 
 IMAGE_FEATURES += "ssh-server-openssh package-management"
 
@@ -87,6 +88,14 @@ frogsboro_provisioning() {
     ln -sfr ${IMAGE_ROOTFS}/data/hostname ${IMAGE_ROOTFS}${sysconfdir}/hostname
 
     lnr ${IMAGE_ROOTFS}/data/.ssh ${IMAGE_ROOTFS}/home/root/.ssh
+}
+
+sshd_defaults_hack() {
+    # Undo what rootfs-postcommands.bbclass has done
+
+    install -m 0755 -d ${IMAGE_ROOTFS}/data/ssh
+    echo 'SYSCONFDIR=${SYSCONFDIR:-/data/ssh}'           > ${IMAGE_ROOTFS}${sysconfdir}/default/ssh
+    echo "SSHD_OPTS='-f /etc/ssh/sshd_config'"          >> ${IMAGE_ROOTFS}${sysconfdir}/default/ssh
 }
 
 inherit core-image
