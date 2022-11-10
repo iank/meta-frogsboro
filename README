@@ -1,41 +1,13 @@
-This README file contains information on the contents of the meta-frogsboro layer.
-
-Please see the corresponding sections below for details.
+The meta-frogsboro layer extends meta-atmel to support the FROGSBORO (https://github.com/iank/frogsboro) board. Please see https://github.com/iank/frogsboro-firmware for detailed build instructions and release archives.
 
 Dependencies
 ============
 
-  URI: <first dependency>
-  branch: <branch name>
+  URI: git://git.yoctoproject.org/poky
+  branch: dunfell
 
-  URI: <second dependency>
-  branch: <branch name>
+  URI: git://git.openembedded.org/meta-openembedded
+  branch: dunfell
 
-  .
-  .
-  .
-
-Patches
-=======
-
-Please submit any patches against the meta-frogsboro layer to the xxxx mailing list (xxxx@zzzz.org)
-and cc: the maintainer:
-
-Maintainer: XXX YYYYYY <xxx.yyyyyy@zzzzz.com>
-
-Table of Contents
-=================
-
-  I. Adding the meta-frogsboro layer to your build
- II. Misc
-
-
-I. Adding the meta-frogsboro layer to your build
-=================================================
-
-Run 'bitbake-layers add-layer meta-frogsboro'
-
-II. Misc
-========
-
---- replace with specific information about the meta-frogsboro layer ---
+  URI: https://github.com/linux4sam/meta-atmel.git
+  branch: dunfell
