@@ -1,7 +1,7 @@
 MACHINE ??= "sam9x60ek-sd-frogsboro"
 DISTRO ?= "poky-atmel"
 PACKAGE_CLASSES ?= "package_ipk"
-EXTRA_IMAGE_FEATURES ?= "debug-tweaks"
+EXTRA_IMAGE_FEATURES ?= "debug-tweaks read-only-rootfs"
 USER_CLASSES ?= "buildstats image-mklibs image-prelink"
 PATCHRESOLVE = "noop"
 
