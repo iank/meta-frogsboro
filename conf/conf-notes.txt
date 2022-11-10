@@ -1,0 +1,5 @@
+
+### Shell environment set up for builds. ###
+
+You can now run 'MACHINE=sam9x60ek-sd-frogsboro bitbake microchip-headless-image'
+
