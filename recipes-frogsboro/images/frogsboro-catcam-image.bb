@@ -6,6 +6,7 @@ require frogsboro-base.inc
 
 IMAGE_INSTALL_append = "\
     ffmpeg \
+    motion \
 "
 
 inherit core-image
