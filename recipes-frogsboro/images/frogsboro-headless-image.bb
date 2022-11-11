@@ -3,6 +3,7 @@ LICENSE = "MIT"
 PR = "r1"
 
 ROOTFS_POSTPROCESS_COMMAND += "frogsboro_provisioning;"
+ROOTFS_POSTPROCESS_COMMAND += "frogsboro_rtl2800usb_fix;"
 IMAGE_PREPROCESS_COMMAND += "sshd_defaults_hack;"
 
 IMAGE_FEATURES += "ssh-server-openssh package-management"
@@ -96,6 +97,10 @@ sshd_defaults_hack() {
     install -m 0755 -d ${IMAGE_ROOTFS}/data/ssh
     echo 'SYSCONFDIR=${SYSCONFDIR:-/data/ssh}'           > ${IMAGE_ROOTFS}${sysconfdir}/default/ssh
     echo "SSHD_OPTS='-f /etc/ssh/sshd_config'"          >> ${IMAGE_ROOTFS}${sysconfdir}/default/ssh
+}
+
+frogsboro_rtl2800usb_fix() {
+    echo 'options rt2800usb fwlps=N ips=N' > ${IMAGE_ROOTFS}${sysconfdir}/modprobe.d/rt2800usb.conf
 }
 
 inherit core-image
