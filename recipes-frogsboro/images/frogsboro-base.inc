@@ -32,6 +32,7 @@ IMAGE_INSTALL = "\
     linux-firmware-rtl8192ce \
     linux-firmware-rtl8192su \
     linux-firmware-rtl8723 \
+    linux-firmware-mt7601u \
     mchp-wireless-firmware \
     \
     alsa-utils \
