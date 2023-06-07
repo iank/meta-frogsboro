@@ -70,20 +70,9 @@ IMAGE_INSTALL = "\
     "
 
 frogsboro_provisioning() {
-    echo "# The loopback interface"                    > ${IMAGE_ROOTFS}${sysconfdir}/network/interfaces
-    echo "auto lo"                                    >> ${IMAGE_ROOTFS}${sysconfdir}/network/interfaces
-    echo "iface lo inet loopback"                     >> ${IMAGE_ROOTFS}${sysconfdir}/network/interfaces
-    echo ""                                           >> ${IMAGE_ROOTFS}${sysconfdir}/network/interfaces
-    echo "# Wireless interfaces"                      >> ${IMAGE_ROOTFS}${sysconfdir}/network/interfaces
-    echo "auto wlan0"                                 >> ${IMAGE_ROOTFS}${sysconfdir}/network/interfaces
-    echo "iface wlan0 inet dhcp"                      >> ${IMAGE_ROOTFS}${sysconfdir}/network/interfaces
-    echo "        wireless_mode managed"              >> ${IMAGE_ROOTFS}${sysconfdir}/network/interfaces
-    echo "        wireless_essid any"                 >> ${IMAGE_ROOTFS}${sysconfdir}/network/interfaces
-    echo "        wpa-driver wext"                    >> ${IMAGE_ROOTFS}${sysconfdir}/network/interfaces
-    echo "        wpa-conf /data/wpa_supplicant.conf" >> ${IMAGE_ROOTFS}${sysconfdir}/network/interfaces
-
     install -d ${IMAGE_ROOTFS}/data
     ln -sfr ${IMAGE_ROOTFS}/data/hostname ${IMAGE_ROOTFS}${sysconfdir}/hostname
+    ln -sfr ${IMAGE_ROOTFS}/data/interfaces ${IMAGE_ROOTFS}${sysconfdir}/network/interfaces
 
     lnr ${IMAGE_ROOTFS}/data/.ssh ${IMAGE_ROOTFS}/home/root/.ssh
 }
